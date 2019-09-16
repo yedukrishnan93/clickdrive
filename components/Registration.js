@@ -27,7 +27,7 @@ export default class Registrartion extends React.Component {
           <Text>{'\n'}</Text>
 
           <Button
-            title="Continue"
+            title="Create Account"
             onPress={() =>
               this.props.navigation.navigate('Interests')
             }></Button>

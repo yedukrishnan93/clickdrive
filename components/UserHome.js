@@ -14,9 +14,9 @@ class UserHome extends React.Component {
         <Header></Header>
         <Image
           source={require('../assets/car.png')}
-          style={{left: 50}}></Image>
-          <Text style={{justifyContent: 'center', textAlign: 'center'}}>
-            Hold Tight {'\n'}We are preparing instructorlist 
+          style={{left: 10,top:80}}></Image>
+          <Text style={{justifyContent: 'center', textAlign: 'center',top:200}}>
+            Hold Tight {'\n'}We are preparing instructor list 
             {'\n'}which match your interest.
           </Text>
       </View>
@@ -37,27 +37,35 @@ const TabNavigator = createBottomTabNavigator({
     screen: UserHome,
     navigationOptions: {
       tabBarLabel: 'Home',
-      tabBarIcon: ({tintColor}) => (
-        <Icon name="add" color={tintColor} size={25} />
-      ),
+      tabBarIcon: ({tintColor}) => {
+        return (<Image
+          style={{ width: 20, height: 20 }}
+          source={require('../assets/Home.png')}/>);
+      },
     },
   },
   Add: {
     screen: UserHome,
     navigationOptions: {
-      tabBarLabel: '+',
-      tabBarIcon: ({tintColor}) => (
-        <Icon name="ios-home" color={tintColor} size={50} />
-      ),
+      tabBarLabel: 'Add Lesson',
+      tabBarIcon: ({tintColor}) => {
+        return (<Image
+          style={{ width: 60, height: 60 }}
+          source={require('../assets/Add.png')}/>);
+      },
     },
   },
   Profile: {
     screen: Home,
     navigationOptions: {
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({tintColor}) => (
-        <Icon name="ios-person" color={tintColor} size={25} />
-      ),
+      tabBarLabel: 'Person',
+      tabBarIcon: ({tintColor}) => {
+        return (<Image
+          style={{ width: 20, height: 20 }}
+          source={require('../assets/person.png')}/>);
+      }
+        
+      ,
     },
   },
 });
