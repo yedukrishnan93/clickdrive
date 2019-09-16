@@ -3,7 +3,16 @@ import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import {Card} from 'react-native-elements';
 import Header from './Header';
 export default class Verification extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      code: '',
+    };
+  }
+  handleChange = evt => this.setState({code: evt});
   render() {
+    const {code} = this.state;
+    const isEnabled = typeof code !== 'undefined' && code.length > 0;
     return (
       <View style={styles.container}>
         <Header></Header>
@@ -14,13 +23,16 @@ export default class Verification extends React.Component {
           </Text>
           <TextInput
             style={styles.signupBox}
-            placeholder="--- --- --- ---"></TextInput>
+            placeholder="--- --- --- ---"
+            value={this.state.code}
+            onChangeText={this.handleChange}></TextInput>
           <Text>{'\n'}</Text>
           <Button
             title="Continue"
             onPress={() =>
               this.props.navigation.navigate('Registration')
-            }></Button>
+            }
+            disabled={!isEnabled}></Button>
         </Card>
       </View>
     );

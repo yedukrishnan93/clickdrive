@@ -4,7 +4,16 @@ import {Card} from 'react-native-elements';
 import Header from './Header';
 
 export default class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      phone: ""
+    };
+  }
+  handleChange = (evt) =>this.setState({phone: evt});
   render() {
+    const { phone } = this.state;
+    const isEnabled = typeof(phone) !== 'undefined' && phone.length>0;
     return (
       <View style={styles.container}>
         <Header></Header>
@@ -16,11 +25,14 @@ export default class Home extends React.Component {
           <TextInput
             style={styles.signupBox}
             placeholder="Enter your phone number"
+            value={this.state.phone}
+            onChangeText = {this.handleChange}
           />
           <Text>{'\n'}</Text>
           <Button
             title="Continue"
             onPress={() => this.props.navigation.navigate('Verification')}
+            disabled={!isEnabled}
           />
         </Card>
       </View>
